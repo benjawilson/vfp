@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+{% load wagtailcore_tags wagtailimages_tags %}
+
+{% block body_class %}template-homepage{% endblock %}
+
+{% block content %}
+
+    <!-- Masthead-->
+    <header class="masthead">
+        <div class="container">
+            <div class="masthead-subheading">{{ page.title }}</div>
+            <div class="masthead-heading text-uppercase">{{ page.hero_text }}</div>
+            {% if page.hero_cta_link %}
+            <a class="btn btn-primary btn-xl text-uppercase" href="{% pageurl page.hero_cta_link %}">
+                {% firstof page.hero_cta page.hero_cta_link.title %}
+            </a>
+        {% endif %}
+        </div>
+    </header>
+
+
+
+ 
+
+  {{ page.body|richtext }}
+{% endblock content %}
